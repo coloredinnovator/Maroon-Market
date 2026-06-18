@@ -1,0 +1,1 @@
+export function clusterIdentity(user) { return {}; }

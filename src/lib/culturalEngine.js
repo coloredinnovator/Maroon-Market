@@ -1,0 +1,1 @@
+export function resolveTags(tags) { return tags; }

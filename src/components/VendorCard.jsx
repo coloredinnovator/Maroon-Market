@@ -1,0 +1,1 @@
+export default function VendorCard({ vendor }) { return <div>{vendor?.name}</div>; }

@@ -1,0 +1,1 @@
+export function assignDelivery(order) { return 'driver_123'; }

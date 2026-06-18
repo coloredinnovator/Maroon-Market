@@ -1,0 +1,1 @@
+export default function CulturalTag({ tag }) { return <span>{tag}</span>; }

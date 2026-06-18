@@ -1,0 +1,1 @@
+export default function CulturalPage() { return <div>Cultural Meaning</div>; }

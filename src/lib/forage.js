@@ -1,0 +1,1 @@
+export function validateSNAP(amount) { return true; }

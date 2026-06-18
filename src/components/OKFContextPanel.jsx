@@ -1,0 +1,1 @@
+export default function OKFContextPanel() { return <div>OKF Knowledge Context</div>; }

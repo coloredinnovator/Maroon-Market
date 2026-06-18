@@ -1,0 +1,1 @@
+export default function Index() { return <h1>Maroon Market</h1>; }

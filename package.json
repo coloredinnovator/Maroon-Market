@@ -1,0 +1,9 @@
+{
+  "name": "maroon-market",
+  "version": "1.0.0",
+  "description": "Maroon Market Shopify Hydrogen Storefront",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

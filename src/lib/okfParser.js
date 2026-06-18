@@ -1,0 +1,1 @@
+export function parseOKF(markdown) { return { metadata: {}, blocks: [] }; }
