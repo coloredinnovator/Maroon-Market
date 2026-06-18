@@ -4,6 +4,7 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const cors = require('cors');
 const { parseAllOKF } = require('./src/lib/okfParser.js');
 const { resolveCulturalContext } = require('./src/lib/culturalEngine.js');
+const { applySafeSpaceFilter } = require('./src/lib/safeSpaceEngine.js');
 
 const typeDefs = `#graphql
   type Vendor {
@@ -19,8 +20,13 @@ const typeDefs = `#graphql
     meaning: String
   }
 
+  input SafeSpaceProfile {
+    required_alignments: [String]
+    dealbreakers: [String]
+  }
+
   type Query {
-    vendors: [Vendor]
+    vendors(safeSpaceProfile: SafeSpaceProfile): [Vendor]
     vendor(id: ID!): Vendor
     culturalOntology: String
   }
@@ -28,9 +34,13 @@ const typeDefs = `#graphql
 
 const resolvers = {
   Query: {
-    vendors: () => {
+    vendors: (_, { safeSpaceProfile }) => {
       const okfData = parseAllOKF();
-      return okfData.vendors || [];
+      let allVendors = okfData.vendors || [];
+      if (safeSpaceProfile) {
+        allVendors = applySafeSpaceFilter(allVendors, safeSpaceProfile);
+      }
+      return allVendors;
     },
     vendor: (_, { id }) => {
       const okfData = parseAllOKF();
